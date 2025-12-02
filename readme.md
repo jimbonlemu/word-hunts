@@ -86,6 +86,13 @@ Example output:
 
 ---
 
+## 📚 Dictionary Source
+This CLI uses the `words_dictionary.json` file from  
+https://github.com/dwyl/english-words  
+All credit for the dictionary data belongs to the original authors.
+
+---
+
 ## 📜 License
 
 MIT — free to use, modify, and distribute.
