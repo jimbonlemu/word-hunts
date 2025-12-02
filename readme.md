@@ -1,4 +1,4 @@
-# WordSearch CLI  
+# Word Hint CLI  
 A fast and customizable command-line tool for searching English words by prefix.  
 Built for games like **Last Letter**, word puzzles, linguistics tools, and general word lookup.
 
