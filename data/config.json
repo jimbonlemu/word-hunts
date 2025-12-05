@@ -1,6 +1,6 @@
 {
   "TABLE_MODE": true,
-  "MAX_RESULTS": 100,
+  "MAX_RESULTS": 20,
   "COLUMNS": 5,
   "CELL_WIDTH": 10,
   "LANGUAGE": "en"

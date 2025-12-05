@@ -76,7 +76,7 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](https://raw.githubusercontent.com/jimbonlemu/word-hunts/refs/heads/main/assets/ex-usage.png)
+![Demo](./assets/ex-usage-v-0.4.0.png)
 
 Example output:
 
