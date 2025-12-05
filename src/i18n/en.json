@@ -37,5 +37,19 @@
   "options_version": "Show version",
   "examples_title": "EXAMPLES:",
   "examples_cat": "Search words starting with \"cat\"",
-  "examples_interactive": "Start interactive mode"
+  "examples_interactive": "Start interactive mode",
+  "language_changed": "Language changed to",
+  "supported_languages": "Supported languages",
+  "header_language_changed": "Language changed to",
+  "header_supported_languages": "Supported languages",
+  "interactive_commands_title": "INTERACTIVE COMMANDS",
+  "interactive_command_prefix": "Search words starting with prefix",
+  "interactive_command_table": "Enable table mode",
+  "interactive_command_table_aliases": "Aliases for table on/off",
+  "interactive_command_language": "Switch language (en/id)",
+  "interactive_command_result_limit": "Set result limit",
+  "interactive_command_columns": "Set number of columns",
+  "interactive_command_cell_width": "Set cell width",
+  "interactive_command_refresh": "Show UI header",
+  "interactive_command_quit": "Quit the program"
 }

@@ -1,7 +1,1 @@
-{
-  "TABLE_MODE": true,
-  "MAX_RESULTS": 20,
-  "COLUMNS": 5,
-  "CELL_WIDTH": 10,
-  "LANGUAGE": "en"
-}
+{"TABLE_MODE": false, "MAX_RESULTS": 100, "COLUMNS": 5, "CELL_WIDTH": 10, "LANGUAGE": "id"} 

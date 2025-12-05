@@ -158,6 +158,17 @@ ${t('options_title')}
   --help, -h           ${t('options_help')}
   --version, -v        ${t('options_version')}
 
+${t('interactive_commands_title') || 'INTERACTIVE COMMANDS'}
+  <prefix>             ${t('interactive_command_prefix')}
+  table on/off         ${t('interactive_command_table')}
+  tbon/tboff           ${t('interactive_command_table_aliases')}
+  /lang <code>         ${t('interactive_command_language')}
+  sres <num>           ${t('interactive_command_result_limit')}
+  scol <num>           ${t('interactive_command_columns')}
+  scw <num>            ${t('interactive_command_cell_width')}
+  getui                ${t('interactive_command_refresh')}
+  /q                   ${t('interactive_command_quit')}
+
 ${t('examples_title')}
   wh cat               ${t('examples_cat')}
   wh                   ${t('examples_interactive')}

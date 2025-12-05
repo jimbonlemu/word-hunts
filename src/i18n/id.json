@@ -41,5 +41,15 @@
   "language_changed": "Bahasa diubah ke",
   "supported_languages": "Bahasa yang didukung",
   "header_language_changed": "Bahasa diubah ke",
-  "header_supported_languages": "Bahasa yang didukung"
+  "header_supported_languages": "Bahasa yang didukung",
+  "interactive_commands_title": "PERINTAH INTERAKTIF",
+  "interactive_command_prefix": "Cari kata dengan awalan",
+  "interactive_command_table": "Aktifkan mode tabel",
+  "interactive_command_table_aliases": "Alias untuk tabel on/off",
+  "interactive_command_language": "Ganti bahasa (en/id)",
+  "interactive_command_result_limit": "Atur batas hasil",
+  "interactive_command_columns": "Atur jumlah kolom",
+  "interactive_command_cell_width": "Atur lebar sel",
+  "interactive_command_refresh": "Tampilkan header UI",
+  "interactive_command_quit": "Keluar dari program"
 }
