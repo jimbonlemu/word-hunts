@@ -1,5 +1,5 @@
 {
-  "name": "@jimbonlemu/word-hunts-cli",
+  "name": "@jimbonlemu/word-hunts",
   "version": "0.2.0",
   "type": "module",
   "description": "Fast offline CLI tool for instant English word-prefix search",
