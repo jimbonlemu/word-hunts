@@ -1,3 +1,4 @@
+# Word Hunts
 
 ```
 ██     ██ ▄████▄ █████▄  ████▄    ██  ██ ██  ██ ███  ██ ██████ ▄█████ 
@@ -5,18 +6,22 @@
  ▀██▀██▀  ▀████▀ ██   ██ ████▀    ██  ██ ▀████▀ ██   ██   ██   █████▀
 ```
 
+[![npm version](https://img.shields.io/npm/v/@jimbonlemu/word-hunts.svg)](https://www.npmjs.com/package/@jimbonlemu/word-hunts)
+[![license](https://img.shields.io/npm/l/@jimbonlemu/word-hunts.svg)](https://github.com/jimbonlemu/word-hunts/blob/main/LICENSE)
+
 A fast and customizable command-line tool for searching English words by prefix.  
 Built for games like **Last Letter**, word puzzles, linguistics tools, and general word lookup.
 
-This CLI loads a local `words_dictionary.json` (400k+ words) and performs instant prefix searches using an optimized binary-search algorithm.
+This CLI loads a local dictionary (400k+ words) and performs instant prefix searches using an optimized binary-search algorithm.
 
 ---
 
 ## ✨ Features
 
 - 🚀 **Instant prefix search** (optimized binary-search, extremely fast)
-- 📚 Uses local `words_dictionary.json` — works fully **offline**
-- 🎛️ Customizable output
+- 📚 Works fully **offline** with local dictionary (400k+ words)
+- 🎯 **Direct search mode** or **interactive mode**
+- 🎛️ **Customizable output**
   - Table mode ON/OFF
   - Max result limit
   - Number of columns
@@ -30,107 +35,147 @@ This CLI loads a local `words_dictionary.json` (400k+ words) and performs instan
 
 ## 📦 Installation
 
-Clone the repository:
+### Via NPM (Recommended)
 
-```sh
-git clone https://github.com/jimbonlemu/word-hints-cli
+```bash
+npm install -g @jimbonlemu/word-hunts
 ```
-Install dependencies:
-```
+
+### Via GitHub
+
+```bash
+git clone https://github.com/jimbonlemu/word-hunts
+cd word-hunts
 npm install
+npm link
 ```
-Run:
+
+---
+
+## 🚀 Usage
+
+### Direct Search Mode
+
+Quick search and exit. Perfect for one-off lookups or scripting.
+
+```bash
+wh cat
+word-hunts hello
 ```
-npm start
-```  
-or with nodemon:
+
+### Interactive Mode
+
+Start interactive mode with UI. Great for multiple searches and exploring features.
+
+```bash
+wh
+# or
+word-hunts
 ```
-npm run dev
-```  
+
+After running, type any prefix:
+
+![Demo](./assets/ex-usage.png)
+
+Example output:
+
+![Demo](./assets/ex-usage-output.png)
+
+### Help & Version
+
+```bash
+wh --help
+wh --version
+```
+
+---
+
+## 🖥️ Commands
+
+### Direct Mode
+
+| Command | Description |
+| --- | --- |
+| `wh <prefix>` | Search words starting with prefix |
+| `wh --help` | Show help message |
+| `wh --version` | Show version |
+
+### Interactive Mode
+
+| Command | Description |
+| --- | --- |
+| `<prefix>` | Search words starting with prefix |
+| `table on` | Enable table mode |
+| `table off` | Disable table mode |
+| `tbon` / `tboff` | Aliases for table on/off |
+| `sres <num>` | Set result limit |
+| `scol <num>` | Set number of columns |
+| `scw <num>` | Set cell width |
+| `getui` | Show UI header |
+| `/q` | Quit the program |
+
 ---
 
 ## 🧠 How It Works
 
 The CLI performs the following steps:
 
- - Pre-sorts all words (case-insensitive)
-
- - Finds the lower-bound match using binary search
-
- - Collects all sequential matching prefixes
-
- - Renders the output in table mode or plain mode
-
- - Fits columns automatically to terminal width
-
- - Truncates long words for clean alignment
-
----
-## 🖥️ Usage
-After running the CLI, type any prefix:
-
-![Demo](./assets/ex-usage.png "Preview after running the CLI")
-
-Example output:
-
-![Demo](./assets/ex-usage-output.png "Preview result after searching")
-
----
-
-## 🖥️ Commands
-
-| Command          | Description              |
-| ---------------- | ------------------------ |
-| `table on`       | Enable table mode        |
-| `table off`      | Disable table mode       |
-| `tbon` / `tboff` | Aliases for table on/off |
-| `sres <num>`     | Set result limit         |
-| `scol <num>`     | Set number of columns    |
-| `scw <num>`      | Set cell width           |
-| `getui`          | Show UI header           |
-| `/q`             | Quit the program         |
+- Pre-sorts all words (case-insensitive)
+- Finds the lower-bound match using binary search
+- Collects all sequential matching prefixes
+- Renders the output in table mode or plain mode
+- Fits columns automatically to terminal width
+- Truncates long words for clean alignment
 
 ---
 
 ## 📚 Dictionary Source
-This CLI uses the `words_dictionary.json` file from  
-https://github.com/dwyl/english-words  
+
+This CLI uses the `words_dictionary.json` file from [dwyl/english-words](https://github.com/dwyl/english-words).
+
+The dictionary contains 479k English words, originally sourced from [Infochimps](https://web.archive.org/web/20131118073324/https://www.infochimps.com/datasets/word-list-350000-simple-english-words-excel-readable) and expanded by the dwyl community.
+
+**License:** [Unlicense](https://unlicense.org/) (Public Domain)  
 All credit for the dictionary data belongs to the original authors.
 
 ---
 
 ## 📜 License
 
-MIT — free to use, modify, and distribute.
+MIT © Mochamad Iqbal Maulana
+
+See [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Mochamad Iqbal Maulana**
+
+- GitHub: [@jimbonlemu](https://github.com/jimbonlemu)
+- NPM: [@jimbonlemu](https://www.npmjs.com/~jimbonlemu)
+
+Made because I needed it and for fun. Maybe you need it too.
+
+A simple & fast CLI to dominate any word-based challenge.
 
 ---
 
 ## 🙏 Acknowledgements
 
-The dictionary data (`words_dictionary.json`) is sourced from the  
-**dwyl/english-words** project (MIT License):  
-https://github.com/dwyl/english-words
-
-Huge thanks to them for providing a high-quality open word list.
+- [dwyl/english-words](https://github.com/dwyl/english-words) - For providing the comprehensive English word list
+- [Infochimps](https://web.archive.org/web/20131118073324/https://www.infochimps.com/datasets/word-list-350000-simple-english-words-excel-readable) - Original word list source
 
 ---
 
-## 🙏 Credits
+## 🤝 Contributing
 
-This project includes dictionary data from:
+Contributions, issues, and feature requests are welcome!
 
-**dwyl/english-words**  
-Licensed under the MIT License.  
-Copyright © dwyl
-
-Repository: https://github.com/dwyl/english-words
+Feel free to check the [issues page](https://github.com/jimbonlemu/word-hunts/issues).
 
 ---
-## 👤 Author
 
-Made by Mochamad Iqbal Maulana
+## ⭐ Show Your Support
 
-I made it because I needed it and for fun. Maybe you need it too.
-
-A simple & fast CLI to dominate any word-based challenge.
-
+Give a ⭐️ if this project helped you!
