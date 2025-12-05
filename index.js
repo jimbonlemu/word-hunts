@@ -10,7 +10,7 @@ import { truncate } from "./lib/utils/truncate.js";
 let config = loadConfig(); // single source of truth
 
 // === CHECK FOR DIRECT SEARCH MODE ===
-const args = process.argv.slice(2); 
+const args = process.argv.slice(2);
 
 if (args.length > 0) {
   const query = args[0];
