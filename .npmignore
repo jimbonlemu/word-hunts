@@ -1,6 +1,6 @@
-.git
-.gitignore
-node_modules
+/dist/
+/assets/
 *.log
 nodemon.json
-/assets
+.aider*
+package-lock.json
