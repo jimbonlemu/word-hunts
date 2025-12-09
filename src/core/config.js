@@ -1,8 +1,8 @@
 import fs from "fs";
-import path from "path";
-import { __dirname } from "../utils/path.js";
+import { CONFIG_PATH } from "../utils/paths.js";
+import { loadTranslations } from "../i18n/index.js";
 
-const configPath = path.join(__dirname, "../../data/config.json");
+const configPath = CONFIG_PATH;
 
 let defaultConfig = {
     TABLE_MODE: true,
@@ -13,22 +13,31 @@ let defaultConfig = {
 };
 
 export function loadConfig() {
+    let config;
+
     if (fs.existsSync(configPath)) {
         try {
             const raw = fs.readFileSync(configPath, "utf8");
             const parsed = JSON.parse(raw);
-            defaultConfig = { ...defaultConfig, ...parsed };
-            return defaultConfig;
+            config = { ...defaultConfig, ...parsed };
         } catch (e) {
             console.error("Error reading config.json, using defaults.", e);
-            return defaultConfig;
+            config = defaultConfig;
         }
     } else {
-        fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-        return defaultConfig;
+        config = defaultConfig;
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
     }
+
+    // Load translations for the configured language
+    const { translations } = loadTranslations(config.LANGUAGE);
+    config.translations = translations;
+
+    return config;
 }
 
 export function saveConfig(newConfig) {
-    fs.writeFileSync(configPath, JSON.stringify(newConfig, null, 2));
+    // Create a copy without the translations object before saving
+    const { translations, ...configToSave } = newConfig;
+    fs.writeFileSync(configPath, JSON.stringify(configToSave, null, 2));
 }

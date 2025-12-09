@@ -19,12 +19,14 @@ import { handleCommand } from "./src/commands/index.js";
 import { truncate } from "./src/utils/truncate.js";
 
 // i18n
-import { setLanguage, t } from "./src/i18n/index.js";
+import { loadTranslations, translate } from "./src/i18n/index.js";
 
 let config = loadConfig(); // single source of truth
 
-// Set language from config
-setLanguage(config.LANGUAGE);
+// Translation helper function using current config
+function t(key, ...params) {
+    return translate(config.translations, key, ...params);
+}
 
 // === COMMAND LINE ARGUMENTS HANDLER ===
 function handleCommandLineArgs() {
@@ -101,7 +103,9 @@ function startInteractiveMode() {
           const lang = parts[1].toLowerCase();
           if (['en', 'id'].includes(lang)) {
             config.LANGUAGE = lang;
-            setLanguage(lang);
+            // Reload translations for new language
+            const { translations } = loadTranslations(lang);
+            config.translations = translations;
             saveConfig(config);
             console.log(`\n${t('language_changed', lang)}\n`);
             printHeader(config);
@@ -160,13 +164,12 @@ ${t('options_title')}
 
 ${t('interactive_commands_title') || 'INTERACTIVE COMMANDS'}
   <prefix>             ${t('interactive_command_prefix')}
-  table on/off         ${t('interactive_command_table')}
   tbon/tboff           ${t('interactive_command_table_aliases')}
   /lang, /language     ${t('interactive_command_language')}
-  sres <num>           ${t('interactive_command_result_limit')}
-  scol <num>           ${t('interactive_command_columns')}
-  scw <num>            ${t('interactive_command_cell_width')}
-  getui, /refs, /ui    ${t('interactive_command_refresh')}
+  /sres <num>          ${t('interactive_command_result_limit')}
+  /scol <num>          ${t('interactive_command_columns')}
+  /scw <num>           ${t('interactive_command_cell_width')}
+  /refs, /ui           ${t('interactive_command_refresh')}
   /q, /quit, /exit     ${t('interactive_command_quit')}
 
 ${t('examples_title')}

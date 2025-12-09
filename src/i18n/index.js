@@ -1,38 +1,48 @@
 /**
  * Internationalization (i18n) module
+ * Functional Programming approach - no global state
  */
 
 import fs from "fs";
-import path from "path";
-import { __dirname } from "../utils/path.js";
+import { I18N_EN_PATH, I18N_ID_PATH } from "../utils/paths.js";
 
-// Global state for translations
-let currentLang = 'en';
-let translations = {};
-
-// Initialize translations
-function initializeTranslations(lang = 'en') {
-  const langPath = path.join(__dirname, `../../src/i18n/${lang}.json`);
+// Pure function to load translations
+export function loadTranslations(lang = 'en') {
+  let langPath;
+  if (lang === 'en') {
+    langPath = I18N_EN_PATH;
+  } else if (lang === 'id') {
+    langPath = I18N_ID_PATH;
+  } else {
+    // fallback to en if invalid lang
+    console.error(`Invalid language code: ${lang}, falling back to English`);
+    langPath = I18N_EN_PATH;
+    return loadEnglishTranslations();
+  }
 
   try {
-    translations = JSON.parse(fs.readFileSync(langPath, 'utf8'));
-    currentLang = lang;
+    const translations = JSON.parse(fs.readFileSync(langPath, 'utf8'));
+    return { lang, translations };
   } catch (e) {
     console.error(`Failed to load translations for language: ${lang}, falling back to English`);
-    currentLang = 'en';
-    const fallbackPath = path.join(__dirname, '../../src/i18n/en.json');
-    translations = JSON.parse(fs.readFileSync(fallbackPath, 'utf8'));
+    return loadEnglishTranslations();
   }
 }
 
-// Initialize with default language
-initializeTranslations();
-
-export function setLanguage(lang) {
-  initializeTranslations(lang);
+// Helper function to load English as fallback
+function loadEnglishTranslations() {
+  try {
+    const translations = JSON.parse(fs.readFileSync(I18N_EN_PATH, 'utf8'));
+    return { lang: 'en', translations };
+  } catch (fallbackError) {
+    console.error('Failed to load fallback English translations!', fallbackError);
+    // If even fallback fails, return empty translations
+    return { lang: 'en', translations: {} };
+  }
 }
 
-export function t(key, ...params) {
+// Pure function to translate text
+export function translate(translations, key, ...params) {
   let translation = translations[key] || key;
 
   // Replace parameters if provided
@@ -45,4 +55,15 @@ export function t(key, ...params) {
   return translation;
 }
 
-export default { setLanguage, t };
+// Convenience function to get translation for a specific language
+export function getTranslationFor(lang, key, ...params) {
+  const { translations } = loadTranslations(lang);
+  return translate(translations, key, ...params);
+}
+
+// Export default object with functions that work with state passed as parameter
+export default {
+  loadTranslations,
+  translate,
+  getTranslationFor
+};
