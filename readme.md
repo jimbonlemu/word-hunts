@@ -76,7 +76,7 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](./assets/ex-usage-v-0.4.0.png)
+![Demo](./assets/ex-usage-v-0.5.0.png)
 
 Example output:
 
@@ -115,15 +115,13 @@ You can switch between supported languages in interactive mode:
 | Command | Description |
 | --- | --- |
 | `<prefix>` | Search words starting with prefix |
-| `table on` | Enable table mode |
-| `table off` | Disable table mode |
 | `tbon` / `tboff` | Aliases for table on/off |
-| `sres <num>` | Set result limit |
-| `scol <num>` | Set number of columns |
-| `scw <num>` | Set cell width |
 | `/lang <code>` | Switch language (en/id) |
-| `getui` | Show UI header |
-| `/q` | Quit the program |
+| `/sres <num>` | Set result limit |
+| `/scol <num>` | Set number of columns |
+| `/scw <num>` | Set cell width |
+| `/refs`, `/ui` | Refresh/Show UI header |
+| `/q`, `/quit`, `/exit` | Quit the program |
 
 ---
 
