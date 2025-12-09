@@ -11,14 +11,12 @@
   "files": [
     "index.js",
     "src/",
-    "data/",
-    "scripts/",
     "readme.md"
   ],
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "prebuild-dict": "node ./scripts/buildDict.js"
+    "prebuild-dict": "node ./src/scripts/buildDict.js"
   },
   "keywords": [
     "word-search",
