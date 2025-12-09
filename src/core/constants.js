@@ -2,11 +2,9 @@
  * Constants for Word Hunts CLI
  */
 import fs from 'fs';
-import path from 'path';
-import { __dirname } from "../utils/path.js";
+import { PACKAGE_JSON_PATH } from "../utils/paths.js";
 
-const packageJsonPath = path.join(__dirname, "../../package.json");
-const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8'));
 const VERSION = packageJson.version;
 const PACKAGE_NAME = packageJson.name;
 
@@ -24,4 +22,4 @@ export const CHECK_VERSION_COMMANDS = ["--version","-v"];
 
 export const QUIT_COMMANDS = ["/q", "/quit", "/exit"];
 export const LANGUAGE_COMMANDS = ["/lang", "/language"];
-export const REFRESH_UI_COMMANDS = ["getui","/refs","/ui"];
+export const REFRESH_UI_COMMANDS = ["/refs","/ui"];

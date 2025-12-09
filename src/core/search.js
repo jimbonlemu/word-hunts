@@ -1,8 +1,7 @@
 import fs from "fs";
-import path from "path";
-import { __dirname } from "../utils/path.js";
+import { WORDS_SORTED_PATH } from "../utils/paths.js";
 
-const sortedPath = path.join(__dirname, "../../data/words_sorted.json");
+const sortedPath = WORDS_SORTED_PATH;
 
 const wordsSorted = JSON.parse(fs.readFileSync(sortedPath, "utf8"));
 
