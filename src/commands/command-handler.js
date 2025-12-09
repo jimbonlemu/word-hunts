@@ -1,10 +1,10 @@
 import { commandRegistry, numericCommands } from './command-registry.js';
-import { t } from '../i18n/index.js';
+import { translate } from '../i18n/index.js';
 
 /**
  * Parse command and return action object instead of executing directly
  */
-export function parseCommand(cmd) {
+export function parseCommand(cmd, translations) {
     const key = cmd.trim().toLowerCase();
 
     // --- lookup registry with alias support ---
@@ -14,7 +14,7 @@ export function parseCommand(cmd) {
         if (key === main || (entry.aliases && entry.aliases.includes(key))) {
             return {
                 done: true,
-                msg: t(entry.msgKey),
+                msg: translate(translations, entry.msgKey),
                 action: entry.action,
                 value: entry.value
             };
@@ -28,12 +28,12 @@ export function parseCommand(cmd) {
 
     if (numericCommands[keyword]) {
         if (isNaN(val) || val <= 0) {
-            return { done: true, msg: t('value_must_be_number') };
+            return { done: true, msg: translate(translations, 'value_must_be_number') };
         }
 
         return {
             done: true,
-            msg: `${t(numericCommands[keyword].labelKey)} ${t('set_to')} ${val}.`,
+            msg: `${translate(translations, numericCommands[keyword].labelKey)} ${translate(translations, 'set_to')} ${val}.`,
             action: numericCommands[keyword].action,
             value: val
         };
@@ -68,7 +68,7 @@ export function executeCommandAction(actionObj, config, saveConfig) {
             saveConfig(config);
             break;
         default:
-            return { ...actionObj, msg: `${t('unknown_action')} ${actionObj.action}` };
+            return { ...actionObj, msg: `${translate(config.translations, 'unknown_action')} ${actionObj.action}` };
     }
 
     return actionObj;
@@ -78,7 +78,7 @@ export function executeCommandAction(actionObj, config, saveConfig) {
  * Handle command by parsing and executing
  */
 export function handleCommand(cmd, config, saveConfig) {
-    const parsed = parseCommand(cmd);
+    const parsed = parseCommand(cmd, config.translations);
     return executeCommandAction(parsed, config, saveConfig);
 }
 
