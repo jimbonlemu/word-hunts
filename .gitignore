@@ -4,6 +4,7 @@
 *.log
 .aider*
 package-lock.json
-    
+
 .gemini/
 gha-creds-*.json
+src/data/words_sorted.json

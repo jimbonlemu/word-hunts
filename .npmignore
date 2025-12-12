@@ -4,3 +4,4 @@
 nodemon.json
 .aider*
 package-lock.json
+src/data/words_sorted.json

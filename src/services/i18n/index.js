@@ -4,7 +4,7 @@
  */
 
 import fs from "fs";
-import { I18N_EN_PATH, I18N_ID_PATH } from "../utils/paths.js";
+import { I18N_EN_PATH, I18N_ID_PATH } from "../../utils/paths.js";
 
 // Pure function to load translations
 export function loadTranslations(lang = 'en') {

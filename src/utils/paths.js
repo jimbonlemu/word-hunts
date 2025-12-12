@@ -8,9 +8,9 @@ const PROJECT_ROOT = path.resolve(__dirname, "../..");
 
 // Helper functions untuk membangun path
 const fromRoot = (...segments) => path.join(PROJECT_ROOT, ...segments);
-const fromData = (...segments) => fromSrc("data", ...segments);
-const fromSrc = (...segments) => fromRoot("src", ...segments);
-const fromI18n = (...segments) => fromSrc("i18n", ...segments);
+const fromData = (...segments) => path.join(__dirname, "..", "data", ...segments);
+const fromSrc = (...segments) => path.join(PROJECT_ROOT, "src", ...segments);
+const fromI18n = (...segments) => fromSrc("services", "i18n", ...segments);
 
 // Path constants
 export const WORDS_DICTIONARY_PATH = fromData("words_dictionary.json");

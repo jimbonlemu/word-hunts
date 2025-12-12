@@ -1,7 +1,7 @@
 {
   "TABLE_MODE": true,
-  "MAX_RESULTS": 100,
-  "COLUMNS": 15,
-  "CELL_WIDTH": 12,
-  "LANGUAGE": "en"
+  "MAX_RESULTS": 40,
+  "COLUMNS": 5,
+  "LANGUAGE": "en",
+  "CELL_WIDTH": 12
 }

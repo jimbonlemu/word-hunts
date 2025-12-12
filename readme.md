@@ -115,11 +115,10 @@ You can switch between supported languages in interactive mode:
 | Command | Description |
 | --- | --- |
 | `<prefix>` | Search words starting with prefix |
-| `tbon` / `tboff` | Aliases for table on/off |
+| `/tbon` / `/tboff` | Toggle table mode (on/off) |
 | `/lang <code>` | Switch language (en/id) |
 | `/sres <num>` | Set result limit |
 | `/scol <num>` | Set number of columns |
-| `/scw <num>` | Set cell width |
 | `/refs`, `/ui` | Refresh/Show UI header |
 | `/q`, `/quit`, `/exit` | Quit the program |
 

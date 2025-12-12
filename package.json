@@ -3,20 +3,29 @@
   "version": "0.5.0",
   "type": "module",
   "description": "Fast offline CLI tool for instant English word-prefix search",
-  "main": "index.js",
+  "main": "./src/bin/cli.js",
   "bin": {
-    "word-hunts": "index.js",
-    "wh": "index.js"
+    "word-hunts": "./src/bin/cli.js",
+    "wh": "./src/bin/cli.js"
   },
   "files": [
-    "index.js",
-    "src/",
-    "readme.md"
+    "src/bin/**/*",
+    "src/build/**/*",
+    "src/commands/**/*",
+    "src/printers/**/*",
+    "src/services/**/*",
+    "src/utils/**/*",
+    "src/data/config.json",
+    "src/data/words_dictionary.json",
+    "readme.md",
+    "LICENSE",
+    ".npmignore"
   ],
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "prebuild-dict": "node ./src/scripts/buildDict.js"
+    "start": "node ./src/bin/cli.js",
+    "dev": "nodemon ./src/bin/cli.js",
+    "build:dict": "node ./src/build/build-dict.js",
+    "postinstall": "npm run build:dict"
   },
   "keywords": [
     "word-search",
@@ -30,12 +39,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimbonlemu/word-hunts-cli.git"
+    "url": "git+https://github.com/jimbonlemu/word-hunts.git"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "@jimbonlemu/word-hunts": "file:jimbonlemu-word-hunts-0.5.0.tgz",
+    "cli-table3": "^0.6.5"
   }
 }
