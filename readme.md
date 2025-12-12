@@ -76,11 +76,11 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](./assets/ex-usage-v-0.5.0.png)
+![Demo](./assets/ex-usage-v-0.6.0.png)
 
 Example output:
 
-![Demo](./assets/ex-usage-output.png)
+![Demo](./assets/ex-usage-output-v-0.6.0.png)
 
 ### Help & Version
 
