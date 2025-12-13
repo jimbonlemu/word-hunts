@@ -22,6 +22,7 @@
   "interactive_command_language": "Switch language (en/id)",
   "interactive_command_result_limit": "Set result limit",
   "interactive_command_columns": "Set number of columns",
+  "interactive_command_cell_width": "Set cell width (auto or manual)",
   "interactive_command_refresh": "Refresh/Show UI header",
   "interactive_command_quit": "Exit the program",
   "found": "Found",
@@ -37,6 +38,7 @@
   "header_table_on_off": "table on/off  (aliases tbon/tboff)",
   "header_set_result_limit": "set limit result",
   "header_set_columns": "set columns",
+  "header_set_cell_width": "CELL WIDTH",
   "header_set_language": "set language",
   "header_get_ui": "show UI",
   "header_quit": "quit",
@@ -45,5 +47,7 @@
   "from": "from",
   "total_results": "Total results:",
   "showing_limited_results": "(Showing limited results of",
-  "quit_command": "Babayo!"
+  "quit_command": "Babayo!",
+  "cell_width_auto_mode": "Cell width set to auto mode",
+  "cell_width_manual_set": "Cell width set to"
 }

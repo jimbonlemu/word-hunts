@@ -22,6 +22,7 @@
   "interactive_command_language": "Ganti bahasa (en/id)",
   "interactive_command_result_limit": "Atur batas hasil",
   "interactive_command_columns": "Atur jumlah kolom",
+  "interactive_command_cell_width": "Atur lebar sel (otomatis atau manual)",
   "interactive_command_refresh": "Refresh/Tampilkan header UI",
   "interactive_command_quit": "Keluar dari program",
   "found": "Ditemukan",
@@ -37,6 +38,7 @@
   "header_table_on_off": "tabel on/off  (alias tbon/tboff)",
   "header_set_result_limit": "atur batas hasil",
   "header_set_columns": "atur jumlah kolom",
+  "header_set_cell_width": "LEBAR SEL",
   "header_set_language": "atur bahasa",
   "header_get_ui": "tampilkan UI",
   "header_quit": "keluar",
@@ -45,5 +47,7 @@
   "from": "dari",
   "total_results": "Total hasil:",
   "showing_limited_results": "(Menampilkan hasil terbatas dari",
-  "quit_command": "Sampai jumpa!"
+  "quit_command": "Sampai jumpa!",
+  "cell_width_auto_mode": "Lebar sel diatur ke mode otomatis",
+  "cell_width_manual_set": "Lebar sel diatur ke"
 }

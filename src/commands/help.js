@@ -32,6 +32,7 @@ export default {
       /lang, /language     ${t('interactive_command_language') || 'Switch language (en/id)'}
       /sres <num>          ${t('interactive_command_result_limit') || 'Set result limit'}
       /scol <num>          ${t('interactive_command_columns') || 'Set number of columns'}
+      /scw <auto|num>      ${t('interactive_command_cell_width') || 'Set cell width (auto or manual)'}
       /refs, /ui           ${t('interactive_command_refresh') || 'Refresh/Show UI header'}
       /q, /quit, /exit     ${t('interactive_command_quit') || 'Exit the program'}
 
