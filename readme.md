@@ -26,7 +26,7 @@ This CLI loads a local dictionary (400k+ words) and performs instant prefix sear
   - Table mode ON/OFF
   - Max result limit
   - Number of columns
-  - Column width
+  - Cell width (auto or manual)
 - 🔧 Persistent settings via `config.json`
 - 📐 Automatic terminal-width adaptation
 - ✂️ Clean truncation for long words
@@ -76,11 +76,11 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](./assets/ex-usage-v-0.6.0.png)
+![Demo](./assets/ex-usage-v-0.6.1.png)
 
 Example output:
 
-![Demo](./assets/ex-usage-output-v-0.6.0.png)
+![Demo](./assets/ex-usage-output-v-0.6.1.png)
 
 ### Help & Version
 
@@ -115,10 +115,12 @@ You can switch between supported languages in interactive mode:
 | Command | Description |
 | --- | --- |
 | `<prefix>` | Search words starting with prefix |
+| `/help` | Show this help message |
 | `/tbon` / `/tboff` | Toggle table mode (on/off) |
 | `/lang <code>` | Switch language (en/id) |
 | `/sres <num>` | Set result limit |
 | `/scol <num>` | Set number of columns |
+| `/scw <auto` / `num>` | Set cell width (auto or manual) |
 | `/refs`, `/ui` | Refresh/Show UI header |
 | `/q`, `/quit`, `/exit` | Quit the program |
 
