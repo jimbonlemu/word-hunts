@@ -6,8 +6,11 @@
  ▀██▀██▀  ▀████▀ ██   ██ ████▀    ██  ██ ▀████▀ ██   ██   ██   █████▀
 ```
 
-[![npm version](https://img.shields.io/npm/v/@jimbonlemu/word-hunts.svg)](https://www.npmjs.com/package/@jimbonlemu/word-hunts)
-[![license](https://img.shields.io/npm/l/@jimbonlemu/word-hunts.svg)](https://github.com/jimbonlemu/word-hunts/blob/main/LICENSE)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@jimbonlemu/word-hunts"><img src="https://img.shields.io/npm/dt/@jimbonlemu/word-hunts.svg" alt="npm downloads"></a>
+  <a href="https://www.npmjs.com/package/@jimbonlemu/word-hunts"><img src="https://img.shields.io/npm/v/@jimbonlemu/word-hunts.svg" alt="npm version"></a>
+  <a href="https://github.com/jimbonlemu/word-hunts/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@jimbonlemu/word-hunts.svg" alt="license"></a>
+</p>
 
 A fast and customizable command-line tool for searching English words by prefix.
 Built for games like **Last Letter**, word puzzles, linguistics tools, and general word lookup.
