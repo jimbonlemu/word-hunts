@@ -24,6 +24,9 @@
   "scripts": {
     "start": "node ./src/bin/cli.js",
     "dev": "nodemon ./src/bin/cli.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:watch": "vitest --watch",
     "build:dict": "node ./src/build/build-dict.js",
     "postinstall": "npm run build:dict"
   },
@@ -45,7 +48,8 @@
     "node": ">=14.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.11",
+    "vitest": "^4.0.15"
   },
   "dependencies": {
     "cli-table3": "^0.6.5"
