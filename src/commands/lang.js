@@ -4,7 +4,7 @@ export default {
     meta: {
         name: "language",
         aliases: ['lang'],
-        desc: "Switch language (en/id)",
+        desc: "interactive_command_language",
         usage: "wh --lang <en|id>"
     },
 

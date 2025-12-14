@@ -33,7 +33,8 @@ export function printResults(list, config, truncateFunc, options = {}) {
     const resultsFor = config.translations?.results_for || "Results for";
     const showing = config.translations?.showing_results || "showing";
     const from = config.translations?.from || "from";
-    console.log(`\n${resultsFor} "${originalSearch}" (${showing} ${list.length} results ${from} ${totalResults} total):\n`);
+    const resultsUnit = config.translations?.results_unit || "results";
+    console.log(`\n${resultsFor} "${originalSearch}" (${showing} ${list.length} ${resultsUnit} ${from} ${totalResults} total):\n`);
   }
 
   // Use non-truncating function if specified
@@ -52,7 +53,8 @@ export function printResults(list, config, truncateFunc, options = {}) {
     console.log(`\n${totalResultsText} ${list.length}`);
     if (list.length === MAX_RESULTS) {
       const showingLimitedText = config.translations?.showing_limited_results || "(Showing limited results of";
-      console.log(`${showingLimitedText} ${MAX_RESULTS} as configured)`);
+      const asConfiguredText = config.translations?.as_configured || "as configured)";
+      console.log(`${showingLimitedText} ${MAX_RESULTS} ${asConfiguredText}`);
     }
   }
 }

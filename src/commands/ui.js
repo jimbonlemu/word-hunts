@@ -4,7 +4,7 @@ export default {
     meta: {
         name: "ui",
         aliases: ['refs'],
-        desc: 'Refresh/Show UI header',
+        desc: 'interactive_command_refresh',
         usage: '/ui, /refs'
     },
 

@@ -2,7 +2,7 @@ export default {
     meta: {
         name: "scol",
         aliases: [],
-        desc: "Set number of columns",
+        desc: "interactive_command_columns",
         usage: "/scol <number>"
     },
     args: {

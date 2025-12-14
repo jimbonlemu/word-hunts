@@ -7,6 +7,7 @@ export { default as uiCmd } from './ui.js';
 export { default as sresCmd } from './sres.js';
 export { default as scolCmd } from './scol.js';
 export { default as scwCmd } from './scw.js';
+export { default as quitCmd } from './quit.js';
 
 // Export all commands as an array
 import helpCmd from './help.js';
@@ -17,6 +18,7 @@ import uiCmd from './ui.js';
 import sresCmd from './sres.js';
 import scolCmd from './scol.js';
 import scwCmd from './scw.js';
+import quitCmd from './quit.js';
 
 export const allCommands = [
   helpCmd,
@@ -26,5 +28,6 @@ export const allCommands = [
   uiCmd,
   sresCmd,
   scolCmd,
-  scwCmd
+  scwCmd,
+  quitCmd
 ];

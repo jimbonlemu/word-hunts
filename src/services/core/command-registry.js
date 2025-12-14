@@ -88,6 +88,28 @@ export function createCommandRegistry() {
         names.add(cmd.meta.name);
       });
       return Array.from(names);
+    },
+
+    /**
+     * Get all commands with their metadata for help display
+     */
+    getHelpInfo: () => {
+      const uniqueCommands = new Map();
+
+      commands.forEach((cmd, name) => {
+        const mainName = cmd.meta.name;
+
+        // Only process each unique command once
+        if (!uniqueCommands.has(mainName)) {
+          // Store the full command metadata with all aliases
+          uniqueCommands.set(mainName, {
+            name: mainName,
+            ...cmd.meta
+          });
+        }
+      });
+
+      return Array.from(uniqueCommands.values());
     }
   };
 }

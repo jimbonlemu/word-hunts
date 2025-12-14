@@ -4,7 +4,7 @@ export default {
     meta: {
         name: "version",
         aliases: ['v'],
-        desc: "Show version",
+        desc: "options_version",
         usage: "wh --version / -v"
     },
 

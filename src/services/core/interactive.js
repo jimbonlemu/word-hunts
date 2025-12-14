@@ -13,10 +13,12 @@ import { printHeader } from "../ui/header.js";
  */
 export function startInteractiveMode(registry, context = {}) {
   const { logger, t, config } = context;
+
+  // Create readline interface
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-    prompt: t ? t('interactive_prompt') : 'wh> ',
+    // Using a placeholder prompt for now, will set actual prompt after each input
   });
 
   // Print header and welcome message
@@ -25,12 +27,26 @@ export function startInteractiveMode(registry, context = {}) {
   } else {
     logger && logger.info(t ? t('interactive_mode_start') : 'Interactive mode started. Type /help for commands.');
   }
+
+  // Set initial prompt
+  rl.setPrompt(t ? t('interactive_prompt') : 'wh> ');
   rl.prompt();
 
   // Handle each input line
   rl.on('line', (input) => {
-    const interactiveContext = { ...context, isInteractive: true };
+    const interactiveContext = { ...context, isInteractive: true, registry };
+
+    // Capture language before handling input (in case language changes)
+    const oldLanguage = context.config?.LANGUAGE;
+
     handleInput(input.trim(), registry, interactiveContext);
+
+    // Check if language has changed
+    if (context.config && oldLanguage !== context.config.LANGUAGE) {
+      // Language has changed, update the prompt to reflect new language
+      rl.setPrompt(context.t ? context.t('interactive_prompt') : 'wh> ');
+    }
+
     rl.prompt();
   });
 
@@ -50,14 +66,8 @@ export function startInteractiveMode(registry, context = {}) {
  * Process user input
  */
 function handleInput(input, registry, context = {}) {
-  if (!input) return;
-
-  // Exit commands
-  if (isExitCommand(input)) {
-    const { logger, t } = context;
-    const quitMessage = t ? t('quit_command') || 'Goodbye!' : 'Goodbye!';
-    logger && logger.info(quitMessage);
-    process.exit(0);
+  if (!input) {
+    return;
   }
 
   // Handle CLI-style help flags in interactive mode
@@ -74,6 +84,14 @@ function handleInput(input, registry, context = {}) {
 
   // Command with slash prefix: /lang en
   if (input.startsWith('/')) {
+    // Check for exit commands specifically (before general command execution)
+    const cmdName = input.slice(1).split(/\s+/)[0].toLowerCase();
+    if (['q', 'quit', 'exit'].includes(cmdName)) {
+      // Execute quit command via registry
+      handleSlashCommand(input, registry, context);
+      return;
+    }
+
     handleSlashCommand(input, registry, context);
     return;
   }
@@ -88,7 +106,7 @@ function handleInput(input, registry, context = {}) {
  * Check if input is an exit command
  */
 function isExitCommand(input) {
-  const exitCommands = ['/q', '/quit', '/exit', 'q', 'quit', 'exit'];
+  const exitCommands = ['/q', '/quit', '/exit'];
   return exitCommands.includes(input.toLowerCase());
 }
 

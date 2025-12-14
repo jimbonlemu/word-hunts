@@ -2,7 +2,7 @@ export default {
     meta: {
         name: "sres",
         aliases: [],
-        desc: "Set max results limit",
+        desc: "interactive_command_result_limit",
         usage: "/sres <number>"
     },
     args: {

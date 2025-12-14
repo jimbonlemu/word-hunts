@@ -40,6 +40,7 @@ const commandContext = {
   saveConfig,
   logger,
   loadTranslations,
+  registry,  // Include registry for commands that need it
   t: (key) => config.translations[key] || key  // Translation function using loaded config
 };
 
@@ -80,7 +81,7 @@ function handleFlags(flags) {
 
   if (flags.lang) {
     registry.execute('lang', flags.lang, commandContext);
-    // Don't return true - continue to next mode
+    return true;
   }
 
   return false;

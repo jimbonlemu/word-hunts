@@ -2,7 +2,7 @@ export default {
     meta: {
         name: "scw",
         aliases: [],
-        desc: "Set cell width (auto or manual)",
+        desc: "interactive_command_cell_width",
         usage: "/scw <auto|number>"
     },
     args: {

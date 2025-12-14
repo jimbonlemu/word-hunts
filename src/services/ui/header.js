@@ -17,7 +17,7 @@ export function printHeader(config) {
 
   // Command definitions with their usage and description keys
   const commands = [
-    { cmd: 'tbon/tboff', usage: '', desc: 'header_table_on_off' },
+    { cmd: '/tb (tbon/tboff)', usage: '', desc: 'header_table_on_off' },
     { cmd: '/sres', usage: '<num>', desc: 'header_set_result_limit' },
     { cmd: '/scol', usage: '<num>', desc: 'header_set_columns' },
     { cmd: '/scw', usage: '<auto|num>', desc: 'interactive_command_cell_width' },
@@ -26,9 +26,12 @@ export function printHeader(config) {
     { cmd: '/q', usage: '', desc: 'header_quit' }
   ];
 
+  // Calculate the maximum command length to align descriptions properly
+  const maxCmdLength = Math.max(...commands.map(({ cmd, usage }) => (usage ? `${cmd} ${usage}` : cmd).length));
+
   // Format command entries with proper alignment
   const commandLines = commands.map(({ cmd, usage, desc }) =>
-    formatCommandEntry(cmd, usage, desc, translations)
+    formatCommandEntry(cmd, usage, desc, translations, maxCmdLength)
   );
 
   // Build the header content

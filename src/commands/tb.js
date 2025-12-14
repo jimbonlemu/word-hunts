@@ -2,7 +2,7 @@ export default {
     meta: {
         name: "tb",
         aliases: ['tbon', 'tboff'],
-        desc: 'Toggle table mode',
+        desc: 'interactive_command_table_aliases',
         usage: 'tbon/tboff'
     },
 

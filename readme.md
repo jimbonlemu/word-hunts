@@ -30,9 +30,10 @@ This CLI loads a local dictionary (400k+ words) and performs instant prefix sear
   - Max result limit
   - Number of columns
   - Cell width (auto or manual)
+- 📖 **Enhanced help system** with clear examples and documentation
 - 🔧 Persistent settings via `config.json`
 - 📐 Automatic terminal-width adaptation
-- ✂️ Clean truncation for long words
+- ✂️ Auto-adaptive cell width based on content
 - 🎮 Perfect for word-based games or productivity tools
 
 ---
@@ -79,17 +80,19 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](./assets/ex-usage-v-0.6.1.png)
+![Demo](./assets/ex-usage-v-1.0.0.png)
 
 Example output:
 
-![Demo](./assets/ex-usage-output-v-0.6.1.png)
+![Demo](./assets/ex-usage-output-v-1.0.0.png)
 
-### Help & Version
+### Help & Version & Language
 
 ```bash
-wh --help
-wh --version
+wh --help          # Show help message
+wh --version       # Show version
+wh --lang en       # Switch language to English and exit
+wh --lang id       # Switch language to Indonesian and exit
 ```
 
 ### Language Switching
@@ -110,22 +113,24 @@ You can switch between supported languages in interactive mode:
 | Command | Description |
 | --- | --- |
 | `wh <prefix>` | Search words starting with prefix |
-| `wh --help` | Show help message |
-| `wh --version` | Show version |
+| `wh --help` or `wh -h` | Show help message |
+| `wh --version` or `wh -v` | Show version |
+| `wh --lang <en|id>` | Switch language (en/id) and exit |
 
 ### Interactive Mode
 
 | Command | Description |
 | --- | --- |
 | `<prefix>` | Search words starting with prefix |
-| `/help` | Show this help message |
-| `/tbon` / `/tboff` | Toggle table mode (on/off) |
-| `/lang <code>` | Switch language (en/id) |
-| `/sres <num>` | Set result limit |
-| `/scol <num>` | Set number of columns |
-| `/scw <auto` / `num>` | Set cell width (auto or manual) |
-| `/refs`, `/ui` | Refresh/Show UI header |
+| `/help`, `/h` | Show this help message |
+| `/tbon` / `/tboff` / `/tb` | Toggle table mode (on/off) |
+| `/lang` / `/language` | Switch language (en/id) |
+| `/sres` | Set result limit |
+| `/scol` | Set number of columns |
+| `/scw` | Set cell width (auto or manual) |
+| `/refs` / `/ui` | Refresh/Show UI header |
 | `/q`, `/quit`, `/exit` | Quit the program |
+| `/version`, `/v` | Show version |
 
 ---
 

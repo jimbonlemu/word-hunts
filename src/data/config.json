@@ -3,5 +3,6 @@
   "MAX_RESULTS": 40,
   "COLUMNS": 5,
   "LANGUAGE": "en",
-  "CELL_WIDTH_MODE": "auto"
+  "CELL_WIDTH_MODE": "auto",
+  "CELL_WIDTH": 12
 }
