@@ -115,7 +115,7 @@ You can switch between supported languages in interactive mode:
 | `wh <prefix>` | Search words starting with prefix |
 | `wh --help` or `wh -h` | Show help message |
 | `wh --version` or `wh -v` | Show version |
-| `wh --lang <en|id>` | Switch language (en/id) and exit |
+| `wh --lang <en,id>` | Switch language (en/id) and exit |
 
 ### Interactive Mode
 
@@ -123,12 +123,12 @@ You can switch between supported languages in interactive mode:
 | --- | --- |
 | `<prefix>` | Search words starting with prefix |
 | `/help`, `/h` | Show this help message |
-| `/tbon` / `/tboff` / `/tb` | Toggle table mode (on/off) |
-| `/lang` / `/language` | Switch language (en/id) |
+| `/tbon`, `/tboff`, `/tb` | Toggle table mode (on/off) |
+| `/lang`, `/language` | Switch language (en/id) |
 | `/sres` | Set result limit |
 | `/scol` | Set number of columns |
 | `/scw` | Set cell width (auto or manual) |
-| `/refs` / `/ui` | Refresh/Show UI header |
+| `/refs`, `/ui` | Refresh/Show UI header |
 | `/q`, `/quit`, `/exit` | Quit the program |
 | `/version`, `/v` | Show version |
 

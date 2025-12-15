@@ -16,6 +16,8 @@
   "example_interactive_lang": "Ganti bahasa di mode interaktif",
   "example_interactive_sres": "Atur maks hasil ke 50",
   "example_interactive_quit": "Keluar dari mode interaktif",
+  "flags_title": "OPSI:",
+  "examples_title": "CONTOH:",
   "description_title": "DESKRIPSI:",
   "description_direct_mode": "Mode langsung: Cari kata secara instan dengan \"wh [query]\"",
   "description_interactive_mode": "Mode interaktif: Ketik kueri secara terus-menerus, gunakan perintah dengan awalan \"/\"",

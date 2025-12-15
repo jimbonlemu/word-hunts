@@ -16,6 +16,8 @@
   "example_interactive_lang": "Switch language in interactive mode",
   "example_interactive_sres": "Set max results to 50",
   "example_interactive_quit": "Exit interactive mode",
+  "flags_title": "FLAGS:",
+  "examples_title": "EXAMPLES:",
   "description_title": "DESCRIPTION:",
   "description_direct_mode": "Direct mode: Search for words instantly with \"wh [query]\"",
   "description_interactive_mode": "Interactive mode: Type queries continuously, use commands with \"/\" prefix",

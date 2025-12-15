@@ -1,46 +1,138 @@
 import { CLI_VERSION } from "./constants.js";
 
-/**
- * Generates the help content string dynamically.
- * Pure utility function that transforms state (registry, t) into a string.
- * @param {Object} context - The context object containing t, registry, etc.
- * @returns {string} The formatted help string.
- */
+const PADDING = {
+  FLAG: 25,
+  COMMAND: 30,
+  EXAMPLE: 20   
+};
+
+const formatFlagUsage = (cmd) => {
+  const usageParts = cmd.usage.split(' / ');
+  const mainUsage = usageParts[0].replace('wh ', '');
+  const aliases = usageParts
+    .slice(1)
+    .filter(part => part.startsWith('-'))
+    .join(', ');
+  
+  return aliases ? `${mainUsage}, ${aliases}` : mainUsage;
+};
+
+const formatCommandVariants = (cmd) => {
+  const variants = [`/${cmd.name}`];
+  if (cmd.aliases?.length > 0) {
+    cmd.aliases.forEach(alias => variants.push(`/${alias}`));
+  }
+  return variants.join(', ');
+};
+
+const extractFirstOption = (usage) => {
+  const match = usage?.match(/<([^>]+)>/);
+  if (!match) return '';
+  return match[1].split('|')[0];
+};
+
+const getExampleArg = (cmdName, usage, cmdMeta = {}) => {
+  // If command has specific example in metadata, use it
+  if (cmdMeta.help && cmdMeta.help.example) {
+    return cmdMeta.help.example;
+  }
+
+  // Fallback to hardcoded mapping for backward compatibility
+  const argMap = {
+    lang: 'en',
+    sres: '50',
+    scol: '10',
+    scw: 'auto'
+  };
+
+  return argMap[cmdName] || extractFirstOption(usage);
+};
+
+const createPaddedLine = (content, padding, suffix = '') => {
+  return `      ${content.padEnd(padding, ' ')}${suffix}`;
+};
+
+const buildFlagsSection = (commands, t) => {
+  const flagCommands = commands.filter(cmd => 
+    cmd.usage?.startsWith('wh --')
+  );
+  
+  const lines = flagCommands.map(cmd => {
+    const flagFormat = formatFlagUsage(cmd);
+    return createPaddedLine(flagFormat, PADDING.FLAG, t(cmd.desc) || cmd.desc);
+  });
+  
+  return `${t('flags_title')}\n${lines.join('\n')}`;
+};
+
+const buildInteractiveSection = (commands, t) => {
+  const interactiveCommands = commands.filter(cmd => {
+    // Include commands that don't have usage starting with 'wh --'
+    // Also include commands like 'help' and 'language' that can be used in interactive mode
+    // even if they have flag usage for CLI
+    const interactiveCapableCommands = ['help', 'language']; // Commands that work in both modes
+    return !cmd.usage || !cmd.usage.startsWith('wh --') || interactiveCapableCommands.includes(cmd.name);
+  });
+
+  const lines = interactiveCommands.map(cmd => {
+    const variants = formatCommandVariants(cmd);
+    return createPaddedLine(variants, PADDING.COMMAND, t(cmd.desc) || cmd.desc);
+  });
+
+  return `${t('interactive_commands_title')}\n${lines.join('\n')}`;
+};
+
+const buildFlagExamples = (commands, t) => {
+  const flagCommands = commands.filter(cmd => cmd.usage?.startsWith('wh --'));
+  
+  return flagCommands.map(cmd => {
+    const mainFlag = cmd.usage.replace('wh --', '--').split(' ')[0];
+    const arg = extractFirstOption(cmd.usage);
+    const example = `wh ${mainFlag}${arg ? ' ' + arg : ''}`;
+    return createPaddedLine(example, PADDING.EXAMPLE, t(cmd.desc) || cmd.desc);
+  }).join('\n      ');
+};
+
+const buildInteractiveExamples = (commands, t) => {
+  const interactiveCommands = commands
+    .filter(cmd => {
+      const interactiveCapableCommands = ['help', 'language']; // Commands that work in both modes
+      return !cmd.usage || !cmd.usage.startsWith('wh --') || interactiveCapableCommands.includes(cmd.name);
+    })
+    .slice(0, 3);
+
+  return interactiveCommands.map(cmd => {
+    const arg = getExampleArg(cmd.name, cmd.usage, cmd);
+    const example = `/${cmd.name}${arg ? ' ' + arg : ''}`;
+    return createPaddedLine(example, PADDING.EXAMPLE, t(cmd.desc) || cmd.desc);
+  }).join('\n      ');
+};
+
+const buildExamplesSection = (commands, t) => {
+  const flagExamples = buildFlagExamples(commands, t);
+  const interactiveExamples = buildInteractiveExamples(commands, t);
+  
+  return `${t('examples_title') || 'EXAMPLES:'}
+      # Direct mode
+      wh cat               ${t('examples_cat')}
+      wh                   ${t('examples_interactive')}
+
+      # Flags
+      ${flagExamples || ''}
+
+      # Interactive mode
+      ${interactiveExamples || ''}`;
+};
+
 export const generateHelpContent = (context) => {
-    const { t = (key) => key, registry } = context;
-
-    let interactiveCommandsSection = '';
-
-    if (registry) {
-        // Generate interactive commands dynamically from registry
-        const commands = registry.getHelpInfo();
-
-        // Format interactive commands specifically for display
-        const interactiveCommandLines = commands
-            .filter(cmd => cmd.name !== 'help') // Exclude help itself to avoid recursion
-            .map(cmd => {
-                // For display in help, we want the aliases in the position of the example usage
-                // Format command aliases with slashes
-                const allNames = [`/${cmd.name}`];
-                if (cmd.aliases && cmd.aliases.length > 0) {
-                    cmd.aliases.forEach(alias => allNames.push(`/${alias}`));
-                }
-
-                // Join all command variations
-                const commandVariants = allNames.join(', ');
-
-                // Pad to align descriptions properly with fixed width
-                const paddedCommand = commandVariants.padEnd(30, ' '); // Fixed width of 30 chars
-
-                return `      ${paddedCommand}${t(cmd.desc) || cmd.desc}`;
-            })
-            .join('\n');
-
-        interactiveCommandsSection = `${t('interactive_commands_title')}
-${interactiveCommandLines}`;
-    }
-
-    return `
+  const { t = (key) => key, registry } = context;
+  
+  const commands = registry.getHelpInfo();
+  const flagsSection = buildFlagsSection(commands, t);
+  const interactiveSection = buildInteractiveSection(commands, t);
+  const examplesSection = buildExamplesSection(commands, t);
+  
+  return `
     ${CLI_VERSION}
 
     ${t('usage_title')}
@@ -51,26 +143,10 @@ ${interactiveCommandLines}`;
       ${t('description_direct_mode')}
       ${t('description_interactive_mode')}
 
-    FLAGS:
-      --help, -h           ${t('options_help')}
-      --version, -v        ${t('options_version')}
-      --lang <en|id>       ${t('options_language')}
+    ${flagsSection}
 
-    ${interactiveCommandsSection}
+    ${interactiveSection}
 
-    EXAMPLES:
-      # Direct mode
-      wh cat               ${t('examples_cat')}
-      wh                   ${t('examples_interactive')}
-
-      # Flags
-      wh --help            ${t('example_flag_help')}
-      wh --version         ${t('example_flag_version')}
-      wh --lang en         ${t('example_flag_lang')}
-
-      # Interactive mode
-      /lang en             ${t('example_interactive_lang')}
-      /sres 50             ${t('example_interactive_sres')}
-      /q                   ${t('example_interactive_quit')}
+    ${examplesSection}
     `;
 };
