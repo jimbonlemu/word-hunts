@@ -5,8 +5,8 @@
   "description": "Fast offline CLI tool for instant English word-prefix search",
   "main": "./src/bin/cli.js",
   "bin": {
-    "word-hunts": "./src/bin/cli.js",
-    "wh": "./src/bin/cli.js"
+    "word-hunts": "src/bin/cli.js",
+    "wh": "src/bin/cli.js"
   },
   "files": [
     "src/bin/**/*",
