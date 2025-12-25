@@ -11,17 +11,13 @@ export default {
     },
     handler: (arg, cmdName, context) => {
         const { config, saveConfig, logger, t } = context;
-        
-        // Parse the new columns value
+
         const newColumns = parseInt(arg);
-        
-        // Update config
+
         config.COLUMNS = newColumns;
-        
-        // Save the updated configuration
+
         saveConfig(config);
-        
-        // Output confirmation message
+
         logger.info(`${t('columns_set_to')} ${newColumns}`);
     },
 }

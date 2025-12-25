@@ -32,12 +32,10 @@ const extractFirstOption = (usage) => {
 };
 
 const getExampleArg = (cmdName, usage, cmdMeta = {}) => {
-  // If command has specific example in metadata, use it
   if (cmdMeta.help && cmdMeta.help.example) {
     return cmdMeta.help.example;
   }
 
-  // Fallback to hardcoded mapping for backward compatibility
   const argMap = {
     lang: 'en',
     sres: '50',
@@ -67,10 +65,10 @@ const buildFlagsSection = (commands, t) => {
 
 const buildInteractiveSection = (commands, t) => {
   const interactiveCommands = commands.filter(cmd => {
-    // Include commands that don't have usage starting with 'wh --'
-    // Also include commands like 'help' and 'language' that can be used in interactive mode
-    // even if they have flag usage for CLI
-    const interactiveCapableCommands = ['help', 'language']; // Commands that work in both modes
+    // Exclude help command to prevent recursion
+    if (cmd.name === 'help') return false;
+
+    const interactiveCapableCommands = ['language']; // 'help' is excluded to prevent recursion
     return !cmd.usage || !cmd.usage.startsWith('wh --') || interactiveCapableCommands.includes(cmd.name);
   });
 
@@ -96,7 +94,7 @@ const buildFlagExamples = (commands, t) => {
 const buildInteractiveExamples = (commands, t) => {
   const interactiveCommands = commands
     .filter(cmd => {
-      const interactiveCapableCommands = ['help', 'language']; // Commands that work in both modes
+      const interactiveCapableCommands = ['help', 'language'];
       return !cmd.usage || !cmd.usage.startsWith('wh --') || interactiveCapableCommands.includes(cmd.name);
     })
     .slice(0, 3);
@@ -126,12 +124,16 @@ const buildExamplesSection = (commands, t) => {
 
 export const generateHelpContent = (context) => {
   const { t = (key) => key, registry } = context;
-  
-  const commands = registry.getHelpInfo();
+
+  // Handle case where registry is null
+  const commands = registry ? registry.getHelpInfo() : [];
+
   const flagsSection = buildFlagsSection(commands, t);
-  const interactiveSection = buildInteractiveSection(commands, t);
+
+  // Only include interactive section if registry exists
+  const interactiveSection = registry ? buildInteractiveSection(commands, t) : '';
   const examplesSection = buildExamplesSection(commands, t);
-  
+
   return `
     ${CLI_VERSION}
 

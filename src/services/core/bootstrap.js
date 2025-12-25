@@ -94,7 +94,7 @@ function handleDirectSearch(args) {
   if (args.length === 0) return false;
 
   const query = args.join(' ');
-  const results = searchByPrefix(query);
+  const results = searchByPrefix(query, config);
 
   if (results.length === 0) {
     const translation = commandContext.t('no_results');

@@ -17,16 +17,14 @@ export default {
         const { config, saveConfig, logger, t } = context;
 
         if (arg === 'auto') {
-            // Set to auto mode
             config.CELL_WIDTH_MODE = 'auto';
-            delete config.CELL_WIDTH; // Remove static width when in auto mode
+            delete config.CELL_WIDTH;
 
             saveConfig(config);
 
             const autoWidthMsg = t('cell_width_auto_mode') || 'Cell width set to auto mode';
             logger.info(autoWidthMsg);
         } else {
-            // Set to manual mode with specific width
             const width = parseInt(arg);
 
             config.CELL_WIDTH_MODE = 'manual';

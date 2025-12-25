@@ -58,8 +58,8 @@ describe('Help functionality', () => {
     expect(helpContent).toContain('INTERACTIVE COMMANDS');
     expect(helpContent).toContain('EXAMPLES:');
 
-    // Check that specific commands appear in the content (excluding help to avoid recursion)
-    expect(helpContent).toContain('/version, /v');
+    // Check that version flag appears in the content
+    expect(helpContent).toContain('--version, -v');
     // Help command should not be in the interactive commands list to prevent recursion
     expect(helpContent).not.toContain('/help, /h');
   });

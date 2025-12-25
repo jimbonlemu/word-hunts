@@ -7,7 +7,9 @@ export const DEFAULT_CONFIG = {
     TABLE_MODE: true,
     MAX_RESULTS: 100,
     COLUMNS: 15,
-    LANGUAGE: 'en'
+    LANGUAGE: 'en',
+    FILTER_ROMAN_NUMERALS: false,
+    MIN_WORD_LENGTH: 2
 };
 
 export const CLI_VERSION = `${name} v${version}`;

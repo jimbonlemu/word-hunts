@@ -98,7 +98,7 @@ describe('Quit command functionality', () => {
     expect(quitCmd.meta).toHaveProperty('name');
     expect(quitCmd.meta).toHaveProperty('aliases');
     expect(quitCmd.meta).toHaveProperty('desc');
-    
+
     expect(quitCmd.meta.name).toBe('quit');
     expect(quitCmd.meta.aliases).toContain('q');
     expect(quitCmd.meta.aliases).toContain('exit');
@@ -110,20 +110,20 @@ describe('Quit command functionality', () => {
     const mockContext = {
       t: (key) => key === 'quit_command' ? 'Babayo!' : 'Goodbye!'
     };
-    
+
     const mockLogger = { info: vi.fn() };
-    
+
     // Mock process.exit to prevent actual exit
     const originalExit = process.exit;
     const exitSpy = vi.spyOn(process, 'exit').mockImplementation((code) => {
       // Don't actually exit
     });
-    
+
     quitCmd.handler(null, 'quit', { ...mockContext, logger: mockLogger });
-    
+
     expect(mockLogger.info).toHaveBeenCalledWith('Babayo!');
     expect(exitSpy).toHaveBeenCalledWith(0);
-    
+
     // Restore original process.exit
     process.exit = originalExit;
   });

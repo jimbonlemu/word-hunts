@@ -16,14 +16,11 @@ export default {
     handler: (arg, cmdName, context) => {
         const { config, saveConfig, logger } = context;
 
-        // Update language in config
         config.LANGUAGE = arg;
 
-        // Update translations in config
         const { translations } = loadTranslations(arg);
         config.translations = translations;
 
-        // Save the updated configuration
         saveConfig(config);
 
         const message = context.t ? `${context.t('language_switched_to')} ${arg}` || `Language switched to ${arg}` : `Language switched to ${arg}`;
