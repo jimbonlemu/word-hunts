@@ -80,11 +80,11 @@ word-hunts
 
 After running, type any prefix:
 
-![Demo](./assets/ex-usage-v-1.0.0.png)
+![Demo](./assets/ex-usage-v-1.1.1.png)
 
 Example output:
 
-![Demo](./assets/ex-usage-output-v-1.0.0.png)
+![Demo](./assets/ex-usage-output-v-1.1.1.png)
 
 ### Help & Version & Language
 
@@ -128,6 +128,8 @@ You can switch between supported languages in interactive mode:
 | `/sres` | Set result limit |
 | `/scol` | Set number of columns |
 | `/scw` | Set cell width (auto or manual) |
+| `/frn [on/off]`, `/frnon`, `/frnoff` | Toggle filtering of Roman numerals (I, V, X, L, C, D, M) |
+| `/sml <number>` | Set minimum word length from result |
 | `/refs`, `/ui` | Refresh/Show UI header |
 | `/q`, `/quit`, `/exit` | Quit the program |
 | `/version`, `/v` | Show version |

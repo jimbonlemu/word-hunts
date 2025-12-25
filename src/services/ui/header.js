@@ -9,7 +9,9 @@ export function printHeader(config) {
     { key: 'header_table_mode', value: config.TABLE_MODE ? "ON" : "OFF" },
     { key: 'header_max_results', value: config.MAX_RESULTS },
     { key: 'header_columns', value: config.COLUMNS },
-    { key: 'header_set_cell_width', value: (config.CELL_WIDTH_MODE === 'manual' && config.CELL_WIDTH !== undefined) ? config.CELL_WIDTH : 'auto' }
+    { key: 'header_set_cell_width', value: (config.CELL_WIDTH_MODE === 'manual' && config.CELL_WIDTH !== undefined) ? config.CELL_WIDTH : 'auto' },
+    { key: 'header_filter_roman_numerals', value: config.FILTER_ROMAN_NUMERALS ? "ON" : "OFF" },
+    { key: 'header_min_word_length', value: config.MIN_WORD_LENGTH }
   ].map(item => ({
     label: translate(translations, item.key),
     value: item.value
@@ -22,6 +24,8 @@ export function printHeader(config) {
     { cmd: '/scol', usage: '<num>', desc: 'header_set_columns' },
     { cmd: '/scw', usage: '<auto|num>', desc: 'interactive_command_cell_width' },
     { cmd: '/lang', usage: '<code>', desc: 'header_set_language' },
+    { cmd: '/frn', usage: '[on|off]', desc: 'interactive_command_filter_roman_numerals' },
+    { cmd: '/sml', usage: '<num>', desc: 'interactive_command_set_min_length' },
     { cmd: '/refs, /ui', usage: '', desc: 'header_get_ui' },
     { cmd: '/q', usage: '', desc: 'header_quit' }
   ];

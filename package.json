@@ -27,6 +27,9 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:watch": "vitest --watch",
+    "test:commands": "vitest run tests/commands/",
+    "test:unit": "vitest run tests/commands.test.js tests/i18n.test.js tests/registry.test.js tests/search.test.js tests/printer.test.js tests/bootstrap.test.js",
+    "test:all": "vitest run --reporter=verbose",
     "build:dict": "node ./src/build/build-dict.js",
     "postinstall": "npm run build:dict"
   },
@@ -36,7 +39,16 @@
     "dictionary",
     "word-games",
     "prefix-search",
-    "last-letter"
+    "last-letter",
+    "roblox-tools",
+    "roblox-last-letter",
+    "word-finder",
+    "vocabulary-tool",
+    "english-words",
+    "word-hunt",
+    "game-helper",
+    "offline-dictionary",
+    "fast-search"
   ],
   "author": "Mochamad Iqbal Maulana",
   "license": "MIT",

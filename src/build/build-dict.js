@@ -37,8 +37,6 @@ export function isSortedDictionaryExists(outputPath = WORDS_SORTED_PATH) {
     return fs.existsSync(outputPath);
 }
 
-// Main execution when run as script
-
 const currentFilePath = fileURLToPath(import.meta.url);
 const isRunAsScript = process.argv[1] && (process.argv[1] === currentFilePath || path.resolve(process.argv[1]) === path.resolve(currentFilePath));
 

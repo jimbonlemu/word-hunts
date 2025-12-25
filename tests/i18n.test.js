@@ -32,7 +32,7 @@ describe('i18n (Internationalization) functionality', () => {
     // Check specific Indonesian values
     expect(translations.usage_title).toBe('PENGGUNAAN:');
     expect(translations.options_help).toBe('Tampilkan bantuan ini');
-    expect(translations.quit_command).toBe('Sampai jumpa!');
+    expect(translations.quit_command).toBe('Babayo!'); // Updated to use Babayo! for Indonesian as well
   });
 
   it('should fallback to English for unknown language', () => {

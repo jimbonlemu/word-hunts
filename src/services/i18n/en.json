@@ -38,7 +38,7 @@
   "found": "Found",
   "words": "words",
   "interactive_mode_start": "Interactive mode started. Type /help for commands.",
-  "goodbye": "Goodbye!",
+  "goodbye": "Babayo!",
   "ui_refreshed": "UI refreshed",
   "usage_info": "Type \"help\" for available commands.",
   "header_table_mode": "TABLE MODE",
@@ -52,6 +52,8 @@
   "header_set_language": "set language",
   "header_get_ui": "show UI",
   "header_quit": "quit",
+  "header_filter_roman_numerals": "FILTER ROMAN",
+  "header_min_word_length": "MIN LENGTH",
   "results_for": "Results for",
   "showing_results": "showing",
   "from": "from",
@@ -61,5 +63,10 @@
   "as_configured": "as configured)",
   "quit_command": "Babayo!",
   "cell_width_auto_mode": "Cell width set to auto mode",
-  "cell_width_manual_set": "Cell width set to"
+  "cell_width_manual_set": "Cell width set to",
+  "interactive_command_filter_roman_numerals": "Toggle filtering of Roman numerals (I, V, X, L, C, D, M)",
+  "filter_roman_numerals_on": "Filter Roman numerals enabled",
+  "filter_roman_numerals_off": "Filter Roman numerals disabled",
+  "interactive_command_set_min_length": "Set minimum word length from result",
+  "min_word_length_set_to": "Minimum word length set to"
 }

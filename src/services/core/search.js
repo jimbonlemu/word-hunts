@@ -27,12 +27,26 @@ function findStartIndex(arr, prefix) {
     return lo;
 }
 
-export function searchByPrefix(prefix) {
+// Function to check if a word is a roman numeral
+export function isRomanNumeral(word) {
+    // Check if only contains characters I, V, X, L, C, D, M and at least 1 character
+    if (!/^[IVXLCDM]+$/.test(word.toUpperCase())) {
+        return false;
+    }
+
+    // Further validation that this is a valid roman numeral
+    // Roman numerals should only have certain combinations
+    const romanRegex = /^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$/;
+    return romanRegex.test(word.toUpperCase());
+}
+
+export function searchByPrefix(prefix, config = null) {
     if (!prefix) return [];
 
     const words = loadWordsSorted();
     const p = prefix.toLowerCase();
-    const minWordLength = 2;
+    // Use MIN_WORD_LENGTH value from config if available, otherwise use default 2
+    const minWordLength = (config && config.MIN_WORD_LENGTH !== undefined) ? config.MIN_WORD_LENGTH : 2;
 
     const startIndex = findStartIndex(words, p);
     const results = [];
@@ -43,6 +57,11 @@ export function searchByPrefix(prefix) {
         if (!word.toLowerCase().startsWith(p)) break;
 
         if (word.length >= minWordLength) {
+            // Check if we need to filter roman numerals
+            if (config && config.FILTER_ROMAN_NUMERALS && isRomanNumeral(word)) {
+                continue; // Skip this word if it's a roman numeral and filter is active
+            }
+
             results.push(word);
         }
     }

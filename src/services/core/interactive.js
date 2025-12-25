@@ -126,7 +126,7 @@ function handleSlashCommand(input, registry, context = {}) {
  */
 function handleSearch(query, context = {}) {
   const { logger, t, config } = context;
-  const results = searchByPrefix(query);
+  const results = searchByPrefix(query, config);
 
   if (results.length === 0) {
     const translation = t('no_results');

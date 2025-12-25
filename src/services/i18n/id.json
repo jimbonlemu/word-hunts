@@ -38,7 +38,7 @@
   "found": "Ditemukan",
   "words": "kata",
   "interactive_mode_start": "Mode interaktif dimulai. Ketik /help untuk perintah.",
-  "goodbye": "Sampai jumpa!",
+  "goodbye": "Babayo!",
   "ui_refreshed": "UI diperbarui",
   "usage_info": "Ketik \"help\" untuk perintah yang tersedia.",
   "header_table_mode": "MODE TABEL",
@@ -52,6 +52,8 @@
   "header_set_language": "atur bahasa",
   "header_get_ui": "tampilkan UI",
   "header_quit": "keluar",
+  "header_filter_roman_numerals": "SARING ROMAWI",
+  "header_min_word_length": "PANJANG MIN",
   "results_for": "Hasil untuk",
   "showing_results": "menampilkan",
   "from": "dari",
@@ -59,7 +61,12 @@
   "total_results": "Total hasil:",
   "showing_limited_results": "(Menampilkan hasil terbatas dari",
   "as_configured": "sesuai konfigurasi)",
-  "quit_command": "Sampai jumpa!",
+  "quit_command": "Babayo!",
   "cell_width_auto_mode": "Lebar sel diatur ke mode otomatis",
-  "cell_width_manual_set": "Lebar sel diatur ke"
+  "cell_width_manual_set": "Lebar sel diatur ke",
+  "interactive_command_filter_roman_numerals": "Alihkan penyaringan angka Romawi (I, V, X, L, C, D, M)",
+  "filter_roman_numerals_on": "Saringan angka Romawi diaktifkan",
+  "filter_roman_numerals_off": "Saringan angka Romawi dinonaktifkan",
+  "interactive_command_set_min_length": "Atur panjang minimal kata dari hasil pencarian",
+  "min_word_length_set_to": "Panjang minimal kata diatur ke"
 }
